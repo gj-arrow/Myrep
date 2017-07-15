@@ -11,3 +11,16 @@ D:\Student\sem\Work Folder\task\Task.Web\Task.BLL\bin\Debug\EntityFramework.xml
 D:\Student\sem\Work Folder\task\Task.Web\Task.BLL\obj\Debug\Task.BLL.csprojResolveAssemblyReference.cache
 D:\Student\sem\Work Folder\task\Task.Web\Task.BLL\obj\Debug\Task.BLL.dll
 D:\Student\sem\Work Folder\task\Task.Web\Task.BLL\obj\Debug\Task.BLL.pdb
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task.BLL\bin\Debug\Task.BLL.dll
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task.BLL\bin\Debug\Task.BLL.pdb
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task.BLL\bin\Debug\AutoMapper.dll
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task.BLL\bin\Debug\Ninject.dll
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task.BLL\bin\Debug\Task.DAL.dll
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task.BLL\bin\Debug\EntityFramework.dll
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task.BLL\bin\Debug\Task.DAL.pdb
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task.BLL\bin\Debug\AutoMapper.xml
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task.BLL\bin\Debug\Ninject.xml
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task.BLL\bin\Debug\EntityFramework.xml
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task.BLL\obj\Debug\Task.BLL.csprojResolveAssemblyReference.cache
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task.BLL\obj\Debug\Task.BLL.dll
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task.BLL\obj\Debug\Task.BLL.pdb
