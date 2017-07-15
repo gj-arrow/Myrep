@@ -1,0 +1,11 @@
+D:\Student\sem\Work Folder\task\Task.Web\Task.DAL\bin\Debug\Task.DAL.dll.config
+D:\Student\sem\Work Folder\task\Task.Web\Task.DAL\bin\Debug\Task.DAL.dll
+D:\Student\sem\Work Folder\task\Task.Web\Task.DAL\bin\Debug\Task.DAL.pdb
+D:\Student\sem\Work Folder\task\Task.Web\Task.DAL\bin\Debug\EntityFramework.dll
+D:\Student\sem\Work Folder\task\Task.Web\Task.DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Student\sem\Work Folder\task\Task.Web\Task.DAL\bin\Debug\EntityFramework.xml
+D:\Student\sem\Work Folder\task\Task.Web\Task.DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Student\sem\Work Folder\task\Task.Web\Task.DAL\obj\Debug\Task.DAL.dll
+D:\Student\sem\Work Folder\task\Task.Web\Task.DAL\obj\Debug\Task.DAL.pdb
+D:\Student\sem\Work Folder\task\Task.Web\Task.DAL\obj\Debug\Task.DAL.Migrations._123.resources
+D:\Student\sem\Work Folder\task\Task.Web\Task.DAL\obj\Debug\Task.DAL.csproj.GenerateResource.Cache
