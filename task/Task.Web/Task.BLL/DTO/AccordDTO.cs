@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task.BLL.DTO
 {
-    public class Accord
+    public class AccordDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }

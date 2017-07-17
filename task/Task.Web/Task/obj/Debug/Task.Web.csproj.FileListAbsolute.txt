@@ -109,6 +109,7 @@ D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\Task.BLL.dll
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\WebActivatorEx.dll
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\WebGrease.dll
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\Task.DAL.dll
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\HtmlAgilityPack.dll
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\Task.BLL.pdb
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\AutoMapper.xml
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\EntityFramework.xml
@@ -131,6 +132,8 @@ D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\System.Web.WebPages.Razor.
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\Antlr3.Runtime.pdb
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\Newtonsoft.Json.xml
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\Task.DAL.pdb
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\HtmlAgilityPack.pdb
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\HtmlAgilityPack.xml
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\obj\Debug\Task.Web.csprojResolveAssemblyReference.cache
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\obj\Debug\Task.dll
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\obj\Debug\Task.pdb

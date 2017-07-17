@@ -19,6 +19,7 @@ namespace Task.WEB.Controllers
 
         public ActionResult Index()
         {
+            performService.getData();
             IEnumerable<PerformerDTO> performDtos = performService.GetPerformers();
             Mapper.Initialize(cfg => cfg.CreateMap<PerformerDTO,PerformerViewModel>());
             var performers = Mapper.Map<IEnumerable<PerformerDTO>, List<PerformerViewModel>>(performDtos);

@@ -7,13 +7,13 @@ namespace Task.DAL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Second : IMigrationMetadata
+    public sealed partial class UpdatePerformer : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Second));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdatePerformer));
         
         string IMigrationMetadata.Id
         {
-            get { return "201707152025318_Second"; }
+            get { return "201707171610212_UpdatePerformer"; }
         }
         
         string IMigrationMetadata.Source

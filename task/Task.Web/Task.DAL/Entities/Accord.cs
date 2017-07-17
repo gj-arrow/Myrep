@@ -12,7 +12,7 @@ namespace Task.DAL.Entities
         public string Name { get; set; }
         public string UrlImage { get; set; }
 
-        Song Song { get; set; }
+        public Song Song { get; set; }
 
     }
 }

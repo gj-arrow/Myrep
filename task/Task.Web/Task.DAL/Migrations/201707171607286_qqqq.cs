@@ -3,7 +3,7 @@ namespace Task.DAL.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class _123 : DbMigration
+    public partial class qqqq : DbMigration
     {
         public override void Up()
         {
@@ -27,6 +27,7 @@ namespace Task.DAL.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         Text = c.String(),
+                        Views = c.String(),
                         Performer_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
@@ -39,6 +40,9 @@ namespace Task.DAL.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
+                        Views = c.Int(nullable: false),
+                        CountOfSongs = c.String(),
+                        Biography = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             

@@ -55,13 +55,13 @@
     <Compile Include="Entities\Song.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
-    <Compile Include="Migrations\201707151920167_123.cs" />
-    <Compile Include="Migrations\201707151920167_123.Designer.cs">
-      <DependentUpon>201707151920167_123.cs</DependentUpon>
+    <Compile Include="Migrations\201707171607286_qqqq.cs" />
+    <Compile Include="Migrations\201707171607286_qqqq.Designer.cs">
+      <DependentUpon>201707171607286_qqqq.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201707152025318_Second.cs" />
-    <Compile Include="Migrations\201707152025318_Second.Designer.cs">
-      <DependentUpon>201707152025318_Second.cs</DependentUpon>
+    <Compile Include="Migrations\201707171610212_UpdatePerformer.cs" />
+    <Compile Include="Migrations\201707171610212_UpdatePerformer.Designer.cs">
+      <DependentUpon>201707171610212_UpdatePerformer.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,11 +75,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201707151920167_123.resx">
-      <DependentUpon>201707151920167_123.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201707171607286_qqqq.resx">
+      <DependentUpon>201707171607286_qqqq.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707152025318_Second.resx">
-      <DependentUpon>201707152025318_Second.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201707171610212_UpdatePerformer.resx">
+      <DependentUpon>201707171610212_UpdatePerformer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,6 +8,7 @@ namespace Task.BLL.Interfaces
     {
         PerformerDTO GetPerformer(int? id);
         IEnumerable<PerformerDTO> GetPerformers();
+        bool getData();
         void Dispose();
     }
 }
