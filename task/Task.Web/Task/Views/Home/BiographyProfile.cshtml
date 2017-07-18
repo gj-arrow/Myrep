@@ -1,0 +1,26 @@
+﻿@model Task.Web.Models.PerformerViewModel
+@{
+    ViewBag.Title = "Amdm.ru-"+ @Model.Name;
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2>@Model.Name</h2>
+    </div>
+    <div>
+        <img src="@Model.UrlImage"/>
+    </div>
+    <div class="panel-heading">
+        <h2>Биография</h2>
+            <div id="Biography" style="float:left;min-height:100px;">
+            </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var parser = new DOMParser()
+        var el = parser.parseFromString('@Model.Biography', "text/html");
+        $("#Biography").html(el.body.innerText);
+    });
+</script>

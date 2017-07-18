@@ -10,5 +10,9 @@ namespace Task.Web.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Text { get; set; }
+        public string Views { get; set; }
+
+        public PerformerViewModel Performer { get; set; }
+        public ICollection<AccordViewModel> Accords { get; set; }
     }
 }

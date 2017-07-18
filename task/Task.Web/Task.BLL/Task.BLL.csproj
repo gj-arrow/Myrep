@@ -57,10 +57,9 @@
     <Compile Include="DTO\SongDTO.cs" />
     <Compile Include="Infrastructure\ServiceModule.cs" />
     <Compile Include="Infrastructure\ValidationException.cs" />
-    <Compile Include="Interfaces\IPerformerService.cs" />
+    <Compile Include="Interfaces\IServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Parser.cs" />
-    <Compile Include="Services\PerformerService.cs" />
+    <Compile Include="Services\AllServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Task.DAL\Task.DAL.csproj">

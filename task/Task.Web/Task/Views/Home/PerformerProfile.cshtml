@@ -1,0 +1,49 @@
+﻿@model Task.Web.Models.PerformerViewModel
+@{
+    ViewBag.Title = "Amdm.ru-Подборы аккордов";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2>@Model.Name</h2>
+    </div>
+
+
+    <div id="shortBiography" style="float:left;min-height:100px;">
+    </div>
+    <h4>@Html.ActionLink("Читать полную биографию", "BiographyProfile", new { idPerformer = Model.Id })</h4>
+    <div>
+        <img src="@Model.UrlImage"/>
+    </div>
+    <div class="panel-heading">
+        <h2>Подборы аккордов</h2>
+    </div>
+        <div class="panel-body">
+            <table class="table table-striped table-condensed table-bordered">
+                <tr>
+                    <th>Название композиции</th>
+                    <th class="text-center">Просмотров</th>
+                </tr>
+                @foreach (var item in Model.Song)
+            {
+                    <tr>
+                        <td>@Html.ActionLink(item.Name, "InfoSong", new { idSong = item.Id })</td>
+                        <td>@item.Views</td>
+                </tr>
+                }
+            </table>
+        </div>
+    </div>
+
+<script>
+    $(document).ready(function () {
+        var parser = new DOMParser()
+        var el = parser.parseFromString('@Model.ShortBiography', "text/html");
+        $("#shortBiography").html(el.body.innerText);
+    });
+</script>
+
+
+@*DELETE FROM dbo.Accords Where Id>0
+DELETE FROM dbo.Songs Where Id>0
+DELETE FROM dbo.Performers Where Id>0*@

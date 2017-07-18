@@ -25,7 +25,7 @@ namespace Task.WEB.Util
         }
         private void AddBindings()
         {
-            kernel.Bind<IPerformerService>().To<PerformerService>();
+            kernel.Bind<IServices>().To<AllServices>();
         }
     }
 }

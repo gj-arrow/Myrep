@@ -1,0 +1,27 @@
+﻿@model Task.Web.Models.SongViewModel
+@{
+    ViewBag.Title = "Amdm.ru-"+ Model.Name;
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2>@Model.Name</h2>
+    </div>
+
+
+    <div id="textSong" style="float:left;min-height:100px;">
+    </div>
+
+    @foreach (var item in Model.Accords)
+            {
+                <img src="@item.UrlImage" alt="@item.Name"/>
+            }
+</div>
+
+<script>
+    $(document).ready(function () {
+        var parser = new DOMParser()
+        var el = parser.parseFromString('@Model.Text.ToString()'), "text/html");
+        $("#textSong").html(el.body.innerText);
+    });
+</script>

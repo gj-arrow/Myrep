@@ -4,11 +4,12 @@ using Task.BLL.DTO;
 
 namespace Task.BLL.Interfaces
 {
-   public interface IPerformerService
+    public interface IServices
     {
         PerformerDTO GetPerformer(int? id);
+        SongDTO GetSong(int? id);
         IEnumerable<PerformerDTO> GetPerformers();
-        bool getData();
+        bool ParsingData();
         void Dispose();
     }
 }

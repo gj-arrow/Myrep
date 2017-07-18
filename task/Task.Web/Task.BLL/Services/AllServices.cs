@@ -6,9 +6,6 @@ using Task.BLL.Interfaces;
 using System.Collections.Generic;
 using AutoMapper;
 
-
-
-using System;
 using System.Text;
 using System.Threading;
 using HtmlAgilityPack;
@@ -18,11 +15,11 @@ using HtmlDocument = HtmlAgilityPack.HtmlDocument;
 
 namespace Task.BLL.Services
 {
-    public class PerformerService : IPerformerService
+    public class AllServices : IServices
     {
         IUnitOfWork Database { get; set; }
 
-        public PerformerService(IUnitOfWork uow)
+        public AllServices(IUnitOfWork uow)
         {
             Database = uow;
         }
@@ -30,7 +27,11 @@ namespace Task.BLL.Services
         public IEnumerable<PerformerDTO> GetPerformers()
         {
             // применяем автомаппер для проекции одной коллекции на другую
-            Mapper.Initialize(cfg => cfg.CreateMap<Performer, PerformerDTO>());
+            Mapper.Initialize(cfg => 
+            {
+                cfg.CreateMap<Performer, PerformerDTO>();
+                cfg.CreateMap<Song, SongDTO>();
+            });
             return Mapper.Map<IEnumerable<Performer>, List<PerformerDTO>>(Database.Performers.GetAll());
         }
 
@@ -42,17 +43,36 @@ namespace Task.BLL.Services
             if (performer == null)
                 throw new ValidationException("Исполнитель не найден", "");
             // применяем автомаппер для проекции Performer на PerformerDTO
-            Mapper.Initialize(cfg => cfg.CreateMap<Performer, PerformerDTO>());
+            Mapper.Initialize(cfg => 
+            {
+                cfg.CreateMap<Performer, PerformerDTO>();
+                cfg.CreateMap<Song, SongDTO>();
+            });
             return Mapper.Map<Performer, PerformerDTO>(performer);
+        }
+
+        public SongDTO GetSong(int? id)
+        {
+            if (id == null)
+                throw new ValidationException("Не установлено id исполнителя", "");
+            var song = Database.Songs.Get(id.Value);
+            if (song == null)
+                throw new ValidationException("Исполнитель не найден", "");
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<Performer, PerformerDTO>();
+                cfg.CreateMap<Song, SongDTO>();
+                cfg.CreateMap<Accord, AccordDTO>();
+            });
+            return Mapper.Map<Song, SongDTO>(song);
         }
 
 
 
-        public bool getData()
+        public bool ParsingData()
         {
             HtmlDocument HD = new HtmlDocument();
-            HtmlDocument HDBiography = new HtmlDocument();
-            string url_songs, url_one_song;
+            string url_songs, url_one_song, urlName;
             string url, count_views, count_songs, name_of_group;
             int count_for_cicle = 0;
             var web = new HtmlWeb
@@ -81,25 +101,42 @@ namespace Task.BLL.Services
                             HtmlNode node_count_views = node_count_song.NextSibling;
                             count_views = node_count_views.InnerText.Trim();
 
-                            name_of_group = hn.InnerText.Trim();
+                            var a = url_songs.Split('/');
+                            urlName = a[a.Length - 2];
 
+                            name_of_group = hn.InnerText.Trim();
                             Performer performer = new Performer();
+
+                            count_for_cicle = 0;
+                            HD = web.Load(url_songs + "wiki/");
+                            HtmlNode html_node = HD.DocumentNode.SelectSingleNode("//div[@class='artist-profile__bio']");
+                            if (html_node.FirstChild != null)
+                            {
+                                html_node.RemoveChild(html_node.FirstChild);
+                            }
+                            performer.Biography = html_node.InnerHtml;
+                            Thread.Sleep(15000);
+
+                            HD = web.Load(url_songs);
+                            HtmlNode ShortBio = HD.DocumentNode.SelectSingleNode("//div[@class='artist-profile__bio']");
+                            if (ShortBio.FirstChild != null)
+                            {
+                                ShortBio.RemoveChild(ShortBio.FirstChild);
+                                ShortBio.RemoveChild(ShortBio.LastChild);
+                            }
+                            HtmlNode UrlImage = HD.DocumentNode.SelectSingleNode("//div[@class='artist-profile__photo debug1']");
+
                             performer.CountOfSongs = count_songs;
                             performer.Name = name_of_group;
                             performer.Views = count_views;
+                            performer.ShortBiography = ShortBio.InnerHtml;
+                            performer.UrlImage = UrlImage.FirstChild.GetAttributeValue("src", "");
+                            performer.UrlName = urlName;
 
-                            count_for_cicle = 0;
-                            HDBiography = web.Load(url_songs + "wiki/");
-                            HtmlNode html_node = HDBiography.DocumentNode.SelectSingleNode("//div[@class='artist-profile__bio']");
-                            performer.Biography = html_node.InnerHtml;
 
                             Database.Performers.Create(performer);
                             Database.Save();
 
-
-                            Thread.Sleep(15000);
-
-                            HD = web.Load(url_songs);
                             //выбирае деревья из класса написанного в textBox и элемента написанного
                             HtmlNodeCollection Elements = HD.DocumentNode.SelectNodes("//td/a");
 

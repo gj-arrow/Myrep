@@ -10,9 +10,12 @@ namespace Task.DAL.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string UrlName { get; set; }
         public string Views { get; set; }
         public string CountOfSongs { get; set; }
+        public string ShortBiography { get; set; }
         public string Biography { get; set; }
+        public string UrlImage { get; set; }
 
         public ICollection<Song> Song { get; set; }
     }

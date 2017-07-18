@@ -3,6 +3,7 @@ using System.Data.Entity;
 using Task.DAL.Interfaces;
 using Task.DAL.EF;
 using Task.DAL.Entities;
+using System.Linq;
 
 namespace Task.DAL.Repositories
 {
@@ -17,12 +18,13 @@ namespace Task.DAL.Repositories
 
         public IEnumerable<Performer> GetAll()
         {
-            return db.Performers;
+            return db.Performers.Include("Song");
         }
 
         public Performer Get(int id)
         {
-            return db.Performers.Find(id);
+            Performer performer = db.Performers.Include("Song").Where(p => p.Id == id).FirstOrDefault();
+            return performer;
         }
 
         public void Create(Performer performer)

@@ -3,6 +3,7 @@ using System.Data.Entity;
 using Task.DAL.Interfaces;
 using Task.DAL.EF;
 using Task.DAL.Entities;
+using System.Linq;
 
 namespace Task.DAL.Repositories
 {
@@ -22,7 +23,7 @@ namespace Task.DAL.Repositories
 
         public Song Get(int id)
         {
-            return db.Songs.Find(id);
+            return db.Songs.Include("Performer").Include("Accords").Where(p => p.Id == id).FirstOrDefault();
         }
 
         public void Create(Song song)

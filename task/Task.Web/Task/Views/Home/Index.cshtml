@@ -1,5 +1,27 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model IEnumerable<Task.Web.Models.PerformerViewModel>
+@{
+    ViewBag.Title = "Amdm.ru";
 }
 
-<p>MyApp</p>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Все исполнители</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped table-condensed table-bordered">
+            <tr>
+                <th>Исполнитель</th>
+                <th class="text-center">Подборов</th>
+                <th class="text-center">Просмотров</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(item.Name, "PerformerProfile", new { idPerformer = item.Id })</td>
+                    <td>@item.CountOfSongs</td>
+                    <td>@item.Views</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
