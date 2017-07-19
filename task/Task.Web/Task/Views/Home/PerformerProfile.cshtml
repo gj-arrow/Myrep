@@ -10,6 +10,7 @@
 
 
     <div id="shortBiography" style="float:left;min-height:100px;">
+        @Html.Raw(@Model.ShortBiography)
     </div>
     <h4>@Html.ActionLink("Читать полную биографию", "BiographyProfile", new { idPerformer = Model.Id })</h4>
     <div>
@@ -34,15 +35,6 @@
             </table>
         </div>
     </div>
-
-<script>
-    $(document).ready(function () {
-        var parser = new DOMParser()
-        var el = parser.parseFromString('@Model.ShortBiography', "text/html");
-        $("#shortBiography").html(el.body.innerText);
-    });
-</script>
-
 
 @*DELETE FROM dbo.Accords Where Id>0
 DELETE FROM dbo.Songs Where Id>0

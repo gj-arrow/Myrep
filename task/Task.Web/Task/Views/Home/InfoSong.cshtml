@@ -10,6 +10,7 @@
 
 
     <div id="textSong" style="float:left;min-height:100px;">
+        @Html.Raw(@Model.Text)
     </div>
 
     @foreach (var item in Model.Accords)
@@ -18,10 +19,4 @@
             }
 </div>
 
-<script>
-    $(document).ready(function () {
-        var parser = new DOMParser()
-        var el = parser.parseFromString('@Model.Text.ToString()'), "text/html");
-        $("#textSong").html(el.body.innerText);
-    });
-</script>
+

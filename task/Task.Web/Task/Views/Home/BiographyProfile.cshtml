@@ -13,14 +13,8 @@
     <div class="panel-heading">
         <h2>Биография</h2>
             <div id="Biography" style="float:left;min-height:100px;">
+                @Html.Raw(@Model.Biography)
             </div>
     </div>
 </div>
 
-<script>
-    $(document).ready(function () {
-        var parser = new DOMParser()
-        var el = parser.parseFromString('@Model.Biography', "text/html");
-        $("#Biography").html(el.body.innerText);
-    });
-</script>
