@@ -3,38 +3,41 @@
     ViewBag.Title = "Amdm.ru-Подборы аккордов";
 }
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h2>@Model.Name</h2>
-    </div>
-
-
-    <div id="shortBiography" style="float:left;min-height:100px;">
-        @Html.Raw(@Model.ShortBiography)
-    </div>
-    <h4>@Html.ActionLink("Читать полную биографию", "BiographyProfile", new { idPerformer = Model.Id })</h4>
+<div class="panel">
+    <div class="artist-profile">
+        <h1>@Model.Name</h1>
+        <div id="shortBiography">
+            @Html.Raw(@Model.ShortBiography)
+            @if (Model.ShortBiography.Length != 0)
+            {
+              <h5>@Html.ActionLink("Читать полную биографию", "BiographyProfile", new { idPerformer = Model.Id })</h5>
+            }
+        </div>
+        <div class="profile-photo">
+            <img src="@Model.UrlImage"/>
+        </div>
+     </div>
     <div>
-        <img src="@Model.UrlImage"/>
+        <h3>Подборы аккордов</h3>
     </div>
-    <div class="panel-heading">
-        <h2>Подборы аккордов</h2>
-    </div>
-        <div class="panel-body">
-            <table class="table table-striped table-condensed table-bordered">
-                <tr>
+    <div class="panel-body set-accords">
+        <table class="table">
+            <thead>
+                <tr class="top_label">
                     <th>Название композиции</th>
                     <th class="text-center">Просмотров</th>
                 </tr>
+            </thead>
                 @foreach (var item in Model.Song)
             {
                     <tr>
-                        <td>@Html.ActionLink(item.Name, "InfoSong", new { idSong = item.Id })</td>
-                        <td>@item.Views</td>
-                </tr>
+                        <td class="td1">@Html.ActionLink(item.Name, "InfoSong", new { idSong = item.Id })</td>
+                        <td class="td2">@item.Views</td>
+                    </tr>
                 }
-            </table>
-        </div>
+         </table>
     </div>
+</div>
 
 @*DELETE FROM dbo.Accords Where Id>0
 DELETE FROM dbo.Songs Where Id>0

@@ -3,18 +3,17 @@
     ViewBag.Title = "Amdm.ru-"+ @Model.Name;
 }
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h2>@Model.Name</h2>
+<div class="panel">
+    <div class="artist-profile">
+        <h1>@Model.Name</h1>
     </div>
-    <div>
-        <img src="@Model.UrlImage"/>
-    </div>
-    <div class="panel-heading">
-        <h2>Биография</h2>
-            <div id="Biography" style="float:left;min-height:100px;">
+    <div class="profile-bio">
+        <h3>Биография</h3>
+            <div id="biography">
                 @Html.Raw(@Model.Biography)
             </div>
     </div>
+    <div>
+        <img class="photo-biography" src="@Model.UrlImage" />
+    </div>
 </div>
-

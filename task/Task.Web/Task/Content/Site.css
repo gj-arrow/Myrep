@@ -22,3 +22,84 @@ select,
 textarea {
     max-width: 280px;
 }
+
+h1, h2, h3, h4, h5 {
+   color:black
+}
+#shortBiography {
+    width:68%;
+    min-height:100px;
+}
+
+.profile-photo{
+    float:right;
+    margin-top:-17%;
+    padding:0% 8% 0% 0%;
+}
+
+.set-accords{
+    padding:0px;
+}
+
+.td1{
+    width:55%;
+}
+
+.td2 {
+    text-align:center;
+}
+
+.td1-icon{
+    width:4%;
+}
+
+.td1-icon > a > img {
+    border-radius: 5px;
+}
+
+.td1-1 {
+    width:60%;
+}
+
+#biography {
+    width:66%;
+    min-height:100px;
+}
+
+.photo-biography {
+    float:right;
+    position:absolute;
+    top:29%;
+    right:8%;
+    padding: 0% 8% 0% 0%;
+}
+
+.info-song{
+    float:left;
+    width:100%;
+}
+
+#text-song {
+    background-color:unset;
+    border:unset;
+    font-family:Courier !important;
+}
+
+.b-podbor-info {
+    margin:45px 0px 0px 0px;
+    padding:20px 0px 0px 0px;
+    right:20%;
+    text-align:left;
+    position:absolute;
+    width:27%;
+    min-width:260px;
+    float:right;
+}
+
+.images-accords {
+    margin:7px;
+    border:1px solid #e3e3e3;
+    padding:15px;
+    background-color:#fff;
+    border-radius:6px 6px 6px 6px;
+}

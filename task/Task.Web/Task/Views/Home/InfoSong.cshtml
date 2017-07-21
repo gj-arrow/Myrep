@@ -1,22 +1,26 @@
 ﻿@model Task.Web.Models.SongViewModel
 @{
-    ViewBag.Title = "Amdm.ru-"+ Model.Name;
+    ViewBag.Title = Model.Performer.Name +"-"+ Model.Name + ", аккорды для гитры";
 }
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h2>@Model.Name</h2>
+<div class="accords-for-gitar">
+    <div class="info-song">
+        <h2>@Model.Name, аккорды</h2>
+        <pre id="text-song">
+             @Html.Raw(@Model.Text)
+        </pre>
     </div>
 
-
-    <div id="textSong" style="float:left;min-height:100px;">
-        @Html.Raw(@Model.Text)
-    </div>
-
-    @foreach (var item in Model.Accords)
+    <div class="b-podbor-info">   
+        <div class="images-accords">
+            <div class="b-podbor-info__top-buttons hidden-phone"><span id="hide-podbor-info" class="g-color__blue"><i class="fa fa-caret-down"></i> Свернуть </span></div>
+            <h4>Аппликатуры аккордов</h4>
+            @foreach (var item in Model.Accords)
             {
-                <img src="@item.UrlImage" alt="@item.Name"/>
+                <img src="@item.UrlImage" alt="@item.Name" />
             }
+        </div>
+    </div>
 </div>
 
 
