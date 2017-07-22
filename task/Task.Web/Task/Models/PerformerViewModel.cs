@@ -16,6 +16,6 @@ namespace Task.Web.Models
         public string Biography { get; set; }
         public string UrlImage { get; set; }
 
-        public IEnumerable<SongViewModel> Song { get; set; }
+        public IEnumerable<SongViewModel> Songs { get; set; }
     }
 }

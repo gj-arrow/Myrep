@@ -17,7 +17,7 @@ namespace Task.BLL.DTO
         public string Biography { get; set; }
         public string UrlImage { get; set; }
 
-        public ICollection<SongDTO> Song { get; set; }
+        public ICollection<SongDTO> Songs { get; set; }
 
     }
 }

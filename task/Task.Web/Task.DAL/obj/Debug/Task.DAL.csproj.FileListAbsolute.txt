@@ -24,3 +24,4 @@ D:\Student\sem\Work Folder\Rep\task\Task.Web\Task.DAL\obj\Debug\Task.DAL.csproj.
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task.DAL\obj\Debug\Task.DAL.Migrations.UpdatePerformer.resources
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task.DAL\obj\Debug\Task.DAL.Migrations.AddUrlImage_and_ShortBio.resources
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task.DAL\obj\Debug\Task.DAL.Migrations.AddUrlNamePerformer.resources
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task.DAL\obj\Debug\Task.DAL.Migrations.addURlVideo.resources

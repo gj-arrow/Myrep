@@ -27,12 +27,13 @@ namespace Task.BLL.Services
         public IEnumerable<PerformerDTO> GetPerformers()
         {
             // применяем автомаппер для проекции одной коллекции на другую
+            var a = Database.Performers.GetAll();
             Mapper.Initialize(cfg => 
             {
                 cfg.CreateMap<Performer, PerformerDTO>();
                 cfg.CreateMap<Song, SongDTO>();
             });
-            return Mapper.Map<IEnumerable<Performer>, List<PerformerDTO>>(Database.Performers.GetAll());
+            return Mapper.Map<IEnumerable<Performer>, List<PerformerDTO>>(a);
         }
 
         public PerformerDTO GetPerformer(int? id)
@@ -68,11 +69,23 @@ namespace Task.BLL.Services
         }
 
 
+        public IEnumerable<SongDTO> GetSongs()
+        {
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<Performer, PerformerDTO>();
+                cfg.CreateMap<Song, SongDTO>();
+                cfg.CreateMap<Accord, AccordDTO>();
+            });
+            return Mapper.Map<IEnumerable<Song>, List<SongDTO>>(Database.Songs.GetAll());
+        }
+
+
 
         public bool ParsingData()
         {
             HtmlDocument HD = new HtmlDocument();
-            string url_songs, url_one_song, urlName;
+            string url_songs, url_one_song, urlName,urlNameVideo="";
             string url, count_views, count_songs, name_of_group;
             int count_for_cicle = 0;
             var web = new HtmlWeb
@@ -161,11 +174,17 @@ namespace Task.BLL.Services
 
                                         HtmlNode html_node_text = HD.DocumentNode.SelectSingleNode("//div[@class='b-podbor__text']/pre");
 
+                                        HtmlNode html_node_video = HD.DocumentNode.SelectSingleNode("//div[@class='b-video']");
+                                        if (html_node_video != null)
+                                            urlNameVideo = html_node_video.FirstChild.NextSibling.FirstChild.GetAttributeValue("src", "");
+                                        else urlNameVideo = "";
+
                                         Song song = new Song();
                                         song.Name = name;
                                         song.Views = count_views;
                                         song.Text = html_node_text.InnerHtml;
                                         song.Performer = performer;
+                                        song.UrlVideo = urlNameVideo;
 
                                         Database.Songs.Create(song);
                                         Database.Save();

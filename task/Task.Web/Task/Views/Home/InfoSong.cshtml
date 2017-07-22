@@ -21,6 +21,16 @@
             }
         </div>
     </div>
+@if (Model.UrlVideo.Length != 0)
+{
+    <div class="b-video">
+        <h2 class="g-color__brown">Видео</h2>
+            <div class="b-video-container">
+                <iframe src="@Model.UrlVideo" width="560" height="315">
+                </iframe>
+            </div>
+    </div>
+}
 </div>
 
 

@@ -4,6 +4,9 @@ using Task.BLL.Interfaces;
 using Task.BLL.DTO;
 using AutoMapper;
 using Task.Web.Models;
+using PagedList.Mvc;
+using PagedList;
+using System.Linq;
 
 
 namespace Task.WEB.Controllers
@@ -11,15 +14,17 @@ namespace Task.WEB.Controllers
     public class HomeController : Controller
     {
         IServices Services;
+        public int pageSize = 2;
 
         public HomeController(IServices serv)
         {
             Services = serv;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-           // performService.ParsingData();
+            int pageNumber = (page ?? 1);
+            // Services.ParsingData();
             IEnumerable<PerformerDTO> performDtos = Services.GetPerformers();
             Mapper.Initialize(cfg =>
             {
@@ -27,11 +32,11 @@ namespace Task.WEB.Controllers
                 cfg.CreateMap<SongDTO, SongViewModel>();
             });
             var performers = Mapper.Map<IEnumerable<PerformerDTO>, List<PerformerViewModel>>(performDtos);
-            return View(performers);
+            return View(performers.ToPagedList(pageNumber, pageSize));
         }
 
 
-        public ActionResult PerformerProfile(int? idPerformer)
+        public ActionResult PerformerProfile(int? idPerformer, int page = 1)
         {
             PerformerDTO performDto = Services.GetPerformer(idPerformer);
             Mapper.Initialize(cfg =>
@@ -40,7 +45,11 @@ namespace Task.WEB.Controllers
                 cfg.CreateMap<SongDTO, SongViewModel>();
             });
             var performer = Mapper.Map<PerformerDTO, PerformerViewModel>(performDto);
-            return View(performer);
+
+            IEnumerable<SongViewModel> songsPerPage = performer.Songs.Skip((page - 1) * pageSize).Take(pageSize);
+            PageInfo pageInfo = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = performer.Songs.Count() };
+            ListSongViewModel model = new ListSongViewModel { PageInfo = pageInfo, Songs = songsPerPage , Performer = performer };
+            return View(model);
         }
 
         public ActionResult BiographyProfile(int? idPerformer)

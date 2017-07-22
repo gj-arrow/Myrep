@@ -17,7 +17,7 @@ namespace Task.DAL.Entities
         public string Biography { get; set; }
         public string UrlImage { get; set; }
 
-        public ICollection<Song> Song { get; set; }
+        public ICollection<Song> Songs { get; set; }
     }
 
 }

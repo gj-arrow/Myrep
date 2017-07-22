@@ -18,12 +18,12 @@ namespace Task.DAL.Repositories
 
         public IEnumerable<Performer> GetAll()
         {
-            return db.Performers.Include("Song");
+            return db.Performers.Include("Songs");
         }
 
         public Performer Get(int id)
         {
-            Performer performer = db.Performers.Include("Song").Where(p => p.Id == id).FirstOrDefault();
+            Performer performer = db.Performers.Include("Songs").Where(p => p.Id == id).FirstOrDefault();
             return performer;
         }
 

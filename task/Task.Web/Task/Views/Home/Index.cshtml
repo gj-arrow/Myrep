@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Task.Web.Models.PerformerViewModel>
+﻿@model PagedList.IPagedList<Task.Web.Models.PerformerViewModel>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Amdm.ru";
 }
@@ -29,4 +30,5 @@
             }
         </table>
     </div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 </div>

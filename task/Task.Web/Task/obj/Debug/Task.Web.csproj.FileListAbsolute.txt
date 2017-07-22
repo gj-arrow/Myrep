@@ -137,3 +137,7 @@ D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\HtmlAgilityPack.xml
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\obj\Debug\Task.Web.csprojResolveAssemblyReference.cache
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\obj\Debug\Task.dll
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\obj\Debug\Task.pdb
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\PagedList.dll
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\PagedList.Mvc.dll
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\PagedList.xml
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\PagedList.Mvc.xml

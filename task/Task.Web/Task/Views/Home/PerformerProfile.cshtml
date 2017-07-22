@@ -1,20 +1,21 @@
-﻿@model Task.Web.Models.PerformerViewModel
+﻿@model Task.Web.Models.ListSongViewModel
+@using Task.Web.Helpers
 @{
     ViewBag.Title = "Amdm.ru-Подборы аккордов";
 }
 
 <div class="panel">
     <div class="artist-profile">
-        <h1>@Model.Name</h1>
+        <h1>@Model.Performer.Name</h1>
         <div id="shortBiography">
-            @Html.Raw(@Model.ShortBiography)
-            @if (Model.ShortBiography.Length != 0)
+            @Html.Raw(@Model.Performer.ShortBiography)
+            @if (Model.Performer.ShortBiography.Length != 0)
             {
-              <h5>@Html.ActionLink("Читать полную биографию", "BiographyProfile", new { idPerformer = Model.Id })</h5>
+              <h5>@Html.ActionLink("Читать полную биографию", "BiographyProfile", new { idPerformer = Model.Performer.Id })</h5>
             }
         </div>
         <div class="profile-photo">
-            <img src="@Model.UrlImage"/>
+            <img src="@Model.Performer.UrlImage"/>
         </div>
      </div>
     <div>
@@ -25,17 +26,27 @@
             <thead>
                 <tr class="top_label">
                     <th>Название композиции</th>
+                    <th class="text-center">Видео</th>
                     <th class="text-center">Просмотров</th>
                 </tr>
             </thead>
-                @foreach (var item in Model.Song)
+                @foreach (var item in Model.Songs)
             {
                     <tr>
                         <td class="td1">@Html.ActionLink(item.Name, "InfoSong", new { idSong = item.Id })</td>
+                        <td class="td2">
+                            @if (item.UrlVideo.Length != 0)
+                            {
+                                  <i class="fa fa-youtube-play">есть</i>
+                            }
+                        </td>
                         <td class="td2">@item.Views</td>
                     </tr>
                 }
          </table>
+    </div>
+    <div class="btn-group">
+        @Html.PageLinks(Model.PageInfo, x => Url.Action("PerformerProfile", new { idPerformer = Model.Performer.Id , page = x }))
     </div>
 </div>
 

@@ -7,8 +7,9 @@ namespace Task.BLL.Interfaces
     public interface IServices
     {
         PerformerDTO GetPerformer(int? id);
-        SongDTO GetSong(int? id);
         IEnumerable<PerformerDTO> GetPerformers();
+        SongDTO GetSong(int? id);
+        IEnumerable<SongDTO> GetSongs();
         bool ParsingData();
         void Dispose();
     }
