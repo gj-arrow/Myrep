@@ -3,6 +3,7 @@ using System.Data.Entity;
 using Task.DAL.Interfaces;
 using Task.DAL.EF;
 using Task.DAL.Entities;
+using System.Linq;
 
 namespace Task.DAL.Repositories
 {
@@ -20,6 +21,11 @@ namespace Task.DAL.Repositories
             return db.Accords;
         }
 
+        public IEnumerable<string> GetAllName()
+        {
+            return db.Accords.Select(x => x.Name).Distinct();
+        }
+
         public Accord Get(int id)
         {
             return db.Accords.Find(id);
@@ -33,6 +39,15 @@ namespace Task.DAL.Repositories
         public void Update(Accord accord)
         {
             db.Entry(accord).State = EntityState.Modified;
+        }
+
+        public void DeleteObjField(int idAccord)
+        {
+            
+        }
+        public Accord SaveObjField(string[] strElements , int id)
+        {
+            return new Accord();
         }
 
         public void Delete(int id)

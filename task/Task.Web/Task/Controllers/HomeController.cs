@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using Task.BLL.Interfaces;
 using Task.BLL.DTO;
@@ -14,7 +15,7 @@ namespace Task.WEB.Controllers
     public class HomeController : Controller
     {
         IServices Services;
-        public int pageSize = 2;
+        public int pageSize = 15;
 
         public HomeController(IServices serv)
         {
@@ -52,18 +53,6 @@ namespace Task.WEB.Controllers
             return View(model);
         }
 
-        public ActionResult BiographyProfile(int? idPerformer)
-        {
-            PerformerDTO performDto = Services.GetPerformer(idPerformer);
-            Mapper.Initialize(cfg =>
-            {
-                 cfg.CreateMap<SongDTO, SongViewModel>();
-                cfg.CreateMap<PerformerDTO, PerformerViewModel>();
-            });
-            var performer = Mapper.Map<PerformerDTO, PerformerViewModel>(performDto);
-            return View(performer);
-        }
-
         public ActionResult InfoSong(int? idSong)
         {
             SongDTO songDto = Services.GetSong(idSong);
@@ -77,6 +66,46 @@ namespace Task.WEB.Controllers
             return View(song);
         }
 
+
+        public ActionResult SaveAccords(int idSong, string strAccords)
+        {
+            //string[] arrAccords = strAccords.Split(',');
+            //List<string> lsAcc = arrAccords.OfType<string>().ToList();
+
+            //SongDTO songDto = Services.GetSong(idSong);
+            //Mapper.Initialize(cfg =>
+            //{
+            //    cfg.CreateMap<SongDTO, SongViewModel>();
+            //    cfg.CreateMap<PerformerDTO, PerformerViewModel>();
+            //    cfg.CreateMap<AccordDTO, AccordViewModel>();
+            //});
+            //var song = Mapper.Map<SongDTO, SongViewModel>(songDto);
+            //List<string> lsDto = new List<string>();
+            //foreach (var item in song.Accords)
+            //    lsDto.Add(item.Name);
+            //var a = arrAccords.Equals(lsDto);
+            //var firstNotSecond = lsAcc.Except(lsDto, StringComparer.Ordinal).ToList();
+            //if(true)
+            string[] arrAccords = strAccords.Split(',');
+            SongDTO updSong =  Services.SaveAccords(arrAccords, idSong);
+
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<SongDTO, SongViewModel>();
+                cfg.CreateMap<PerformerDTO, PerformerViewModel>();
+                cfg.CreateMap<AccordDTO, AccordViewModel>();
+            });
+            var song = Mapper.Map<SongDTO, SongViewModel>(updSong);
+
+            return View("InfoSong" , song);
+        }
+
+        [HttpGet]
+        public JsonResult DataAccords()
+        {
+           IEnumerable<string> ls = Services.GetAccords();
+           return Json(ls.Distinct(), JsonRequestBehavior.AllowGet);
+        }
 
 
         protected override void Dispose(bool disposing)

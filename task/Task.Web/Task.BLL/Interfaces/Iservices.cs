@@ -10,6 +10,8 @@ namespace Task.BLL.Interfaces
         IEnumerable<PerformerDTO> GetPerformers();
         SongDTO GetSong(int? id);
         IEnumerable<SongDTO> GetSongs();
+        IEnumerable<string> GetAccords();
+        SongDTO SaveAccords(string[] arr , int idSong);
         bool ParsingData();
         void Dispose();
     }

@@ -46,7 +46,6 @@ namespace Task.DAL.Repositories
             }
         }
 
-
         public void Save()
         {
             db.SaveChanges();

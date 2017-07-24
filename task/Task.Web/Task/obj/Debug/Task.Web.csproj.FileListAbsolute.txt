@@ -98,6 +98,8 @@ D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\Microsoft.Web.Infrastructu
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\Newtonsoft.Json.dll
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\Ninject.dll
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\Ninject.Web.Common.dll
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\PagedList.dll
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\PagedList.Mvc.dll
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\System.Web.Helpers.dll
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\System.Web.Mvc.dll
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\System.Web.Optimization.dll
@@ -122,6 +124,8 @@ D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\Microsoft.ApplicationInsig
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\Ninject.xml
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\Ninject.Web.Common.xml
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\PagedList.xml
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\PagedList.Mvc.xml
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\System.Web.Helpers.xml
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\System.Web.Mvc.xml
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\System.Web.Optimization.xml
@@ -137,7 +141,3 @@ D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\HtmlAgilityPack.xml
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\obj\Debug\Task.Web.csprojResolveAssemblyReference.cache
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\obj\Debug\Task.dll
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\obj\Debug\Task.pdb
-D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\PagedList.dll
-D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\PagedList.Mvc.dll
-D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\PagedList.xml
-D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\PagedList.Mvc.xml

@@ -1,8 +1,11 @@
 ﻿@model Task.Web.Models.SongViewModel
 @{
-    ViewBag.Title = Model.Performer.Name +"-"+ Model.Name + ", аккорды для гитры";
+    ViewBag.Title = Model.Performer.Name +"-"+ Model.Name + ", аккорды для гитары";
 }
+<script src="dist/bootstrap-tokenfield.js"></script>
 
+<link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet">
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 <div class="accords-for-gitar">
     <div class="info-song">
         <h2>@Model.Name, аккорды</h2>
@@ -17,10 +20,20 @@
             <h4>Аппликатуры аккордов</h4>
             @foreach (var item in Model.Accords)
             {
-                <img src="@item.UrlImage" alt="@item.Name" />
+                <img class="imagesAccord" src="@item.UrlImage" alt="@item.Name" />
             }
         </div>
-    </div>
+
+        <form class="form-horizontal" action="@Url.Action("SaveAccords", "Home")" method="post">
+            <div class="editAccords">
+                <input type="hidden" name="idSong" value="@Model.Id" />
+                <input type="text" class="form-control"  name="strAccords" id="tokenfield" value=""/>
+            </div>
+
+            <input type="submit" value="Сохранить" class="btn btn-success saveAcc" />
+        </form>
+
+</div>
 @if (Model.UrlVideo.Length != 0)
 {
     <div class="b-video">
@@ -34,3 +47,24 @@
 </div>
 
 
+<script>
+    $(document).ready(function () {
+        var url = "/Home/DataAccords";
+        var arr = [];
+        $('.imagesAccord').each(function (index, value) {
+            arr.push(value.alt);
+        })
+        $.ajax(url, {
+            success: function (data) {
+                $('#tokenfield').tokenfield({
+                        tokens:arr,
+                        autocomplete: {
+                        source: data,
+                        delay: 100
+                    },
+                    showAutocompleteOnFocus: true
+                })
+        }
+        });
+    });
+</script>

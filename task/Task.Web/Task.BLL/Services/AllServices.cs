@@ -80,7 +80,10 @@ namespace Task.BLL.Services
             return Mapper.Map<IEnumerable<Song>, List<SongDTO>>(Database.Songs.GetAll());
         }
 
-
+        public IEnumerable<string> GetAccords()
+        {
+            return Database.Accords.GetAllName();
+        }
 
         public bool ParsingData()
         {
@@ -197,7 +200,7 @@ namespace Task.BLL.Services
                                             foreach (HtmlNode hn4 in Elements2)
                                             {
                                                 Accord accord = new Accord();
-                                                accord.Name = (hn4.GetAttributeValue("alt", ""));
+                                                accord.Name = (hn4.GetAttributeValue("alt", "")).TrimStart();
                                                 accord.UrlImage = hn4.GetAttributeValue("src", "");
                                                 accord.Song = song;
 
@@ -223,7 +226,18 @@ namespace Task.BLL.Services
         }
 
 
-
+        public SongDTO SaveAccords(string[] arr , int idSong)
+        {
+            Database.Songs.DeleteObjField(idSong);
+            Song updateSong  = Database.Songs.SaveObjField(arr,idSong);
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<Performer, PerformerDTO>();
+                cfg.CreateMap<Song, SongDTO>();
+                cfg.CreateMap<Accord, AccordDTO>();
+            });
+            return Mapper.Map<Song, SongDTO>(updateSong);
+        }
 
 
         public void Dispose()
