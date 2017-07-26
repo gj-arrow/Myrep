@@ -5,6 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Task.App_Start;
+using AutoMapper;
+using Task.BLL.DTO;
+using Task.Web.Models;
+using Task.BLL.Infrastructure;
 
 namespace Task
 {
@@ -16,6 +21,8 @@ namespace Task
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            //AutoMapperConfigBLL.RegisterMappings();
+           // AutoMapperConfigWeb.RegisterMappings();
         }
     }
 }

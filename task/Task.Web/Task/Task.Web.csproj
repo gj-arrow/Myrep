@@ -177,19 +177,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutoMapperConfigWeb.cs" />
+    <Compile Include="App_Start\AutoMapperConfiguration.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccordController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PerformerController.cs" />
+    <Compile Include="Controllers\SongController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\PagingHelpers.cs" />
-    <Compile Include="Models\AccordViewModel.cs" />
-    <Compile Include="Models\ListSongViewModel.cs" />
+    <Compile Include="Models\Entities\AccordViewModel.cs" />
+    <Compile Include="Models\Entities\ListSongViewModel.cs" />
     <Compile Include="Models\PageInfo.cs" />
-    <Compile Include="Models\PerformerViewModel.cs" />
+    <Compile Include="Models\Entities\PerformerViewModel.cs" />
     <Compile Include="Models\SongViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\NinjectDependencyResolver.cs" />
@@ -234,13 +239,16 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\PerformerProfile.cshtml" />
-    <Content Include="Views\Home\BiographyProfile.cshtml" />
-    <Content Include="Views\Home\InfoSong.cshtml" />
+    <Content Include="Views\Performer\Index.cshtml" />
+    <Content Include="Views\Performer\PerformerProfile.cshtml" />
+    <Content Include="Views\Performer\BiographyProfile.cshtml" />
+    <Content Include="Views\Shared\InfoSong.cshtml" />
+    <Content Include="Views\Home\ParsingData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Accord\" />
+    <Folder Include="Views\Song\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

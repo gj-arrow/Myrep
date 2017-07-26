@@ -26,7 +26,7 @@ namespace Task.DAL.Repositories
             }
         }
 
-        public IRepository<Song> Songs
+        public ISong Songs
         {
             get
             {
@@ -36,7 +36,7 @@ namespace Task.DAL.Repositories
             }
         }
 
-        public IRepository<Accord> Accords
+        public IAccord Accords
         {
             get
             {

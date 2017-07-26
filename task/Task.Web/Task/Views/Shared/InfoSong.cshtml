@@ -24,7 +24,7 @@
             }
         </div>
 
-        <form class="form-horizontal" action="@Url.Action("SaveAccords", "Home")" method="post">
+        <form class="form-horizontal" action="@Url.Action("SaveAccords", "Accord")" method="post">
             <div class="editAccords">
                 <input type="hidden" name="idSong" value="@Model.Id" />
                 <input type="text" class="form-control"  name="strAccords" id="tokenfield" value=""/>
@@ -49,7 +49,7 @@
 
 <script>
     $(document).ready(function () {
-        var url = "/Home/DataAccords";
+        var url = "/Accord/DataAccords";
         var arr = [];
         $('.imagesAccord').each(function (index, value) {
             arr.push(value.alt);

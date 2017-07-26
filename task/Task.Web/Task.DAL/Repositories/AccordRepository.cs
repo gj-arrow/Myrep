@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Task.DAL.Repositories
 {
-    public class AccordRepository : IRepository<Accord>
+    public class AccordRepository : IAccord
     {
         private EntityContext db;
 
@@ -39,15 +39,6 @@ namespace Task.DAL.Repositories
         public void Update(Accord accord)
         {
             db.Entry(accord).State = EntityState.Modified;
-        }
-
-        public void DeleteObjField(int idAccord)
-        {
-            
-        }
-        public Accord SaveObjField(string[] strElements , int id)
-        {
-            return new Accord();
         }
 
         public void Delete(int id)

@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Task.DAL.Repositories
 {
-    public class SongRepository : IRepository<Song>
+    public class SongRepository : IRepository<Song>, ISong
     {
         private EntityContext db;
 
@@ -19,11 +19,6 @@ namespace Task.DAL.Repositories
         public IEnumerable<Song> GetAll()
         {
             return db.Songs;
-        }
-
-        public IEnumerable<string> GetAllName()
-        {
-            return db.Accords.Select(x => x.Name).Distinct();
         }
 
         public Song Get(int id)
@@ -41,30 +36,30 @@ namespace Task.DAL.Repositories
             db.Entry(song).State = EntityState.Modified;
         }
 
-        public Song SaveObjField(string[] strElements, int idSong)
+        public Song AddAccords(string[] elements, int idSong)
         {
             List<Accord> temp = new List<Accord>();
             Song song = db.Songs.Include("Performer").Include("Accords").Where(i => i.Id == idSong).FirstOrDefault();
-            if (song != null && strElements != null)
+            if (song != null && elements != null)
             {
-                foreach (var item in strElements)
+                foreach (var item in elements)
                 {
                     temp.Add(db.Accords.Where(n => n.Name == item.TrimStart()).FirstOrDefault());
                 }
                 foreach (var item in temp)
-                    {
+                {
                     Accord accord = new Accord();
-                        accord.Name = item.Name;
-                        accord.UrlImage = item.UrlImage;
-                        accord.Song = song;
-                        db.Accords.Add(accord);
-                     }
-                    db.SaveChanges();       
+                    accord.Name = item.Name;
+                    accord.UrlImage = item.UrlImage;
+                    accord.Song = song;
+                    db.Accords.Add(accord);
+                }
+                db.SaveChanges();       
             }
             return song;
         }
 
-        public void DeleteObjField(int idSong)
+        public void DeleteAccords(int idSong)
         {
             IEnumerable<Accord> deletedAcc = db.Accords.Where(i => i.Song.Id == idSong);
             if (deletedAcc != null)

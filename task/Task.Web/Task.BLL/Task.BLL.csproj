@@ -55,11 +55,17 @@
     <Compile Include="DTO\AccordDTO.cs" />
     <Compile Include="DTO\PerformerDTO.cs" />
     <Compile Include="DTO\SongDTO.cs" />
+    <Compile Include="Infrastructure\AutoMapperConfig.cs" />
     <Compile Include="Infrastructure\ServiceModule.cs" />
     <Compile Include="Infrastructure\ValidationException.cs" />
+    <Compile Include="Interfaces\IAccordServices.cs" />
+    <Compile Include="Interfaces\ICommon.cs" />
     <Compile Include="Interfaces\IServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\AllServices.cs" />
+    <Compile Include="Services\AccordService.cs" />
+    <Compile Include="Services\CommonServices.cs" />
+    <Compile Include="Services\PerformerService.cs" />
+    <Compile Include="Services\SongService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Task.DAL\Task.DAL.csproj">

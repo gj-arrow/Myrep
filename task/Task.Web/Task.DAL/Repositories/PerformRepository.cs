@@ -21,11 +21,6 @@ namespace Task.DAL.Repositories
             return db.Performers.Include("Songs");
         }
 
-        public IEnumerable<string> GetAllName()
-        {
-            return db.Performers.Select(x => x.Name).Distinct();
-        }
-
         public Performer Get(int id)
         {
             Performer performer = db.Performers.Include("Songs").Where(p => p.Id == id).FirstOrDefault();
@@ -41,16 +36,6 @@ namespace Task.DAL.Repositories
         {
             db.Entry(performer).State = EntityState.Modified;
         }
-
-        public void DeleteObjField(int idPerformer)
-        {
-
-        }
-        public Performer SaveObjField(string[] strElements, int id)
-        {
-            return new Performer();
-        }
-
 
         public void Delete(int id)
         {

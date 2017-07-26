@@ -4,10 +4,10 @@ using Task.BLL.DTO;
 
 namespace Task.BLL.Interfaces
 {
-    public interface IServices<T>
+   public interface IAccordServices
     {
-        T GetById(int? id);
-        IEnumerable<T> GetAll();
+        IEnumerable<string> GetNameAccrods();
+        SongDTO SaveAccords(string[] arr, int idSong);
         void Dispose();
     }
 }

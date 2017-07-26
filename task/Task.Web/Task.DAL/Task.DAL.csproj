@@ -53,7 +53,9 @@
     <Compile Include="Entities\Accord.cs" />
     <Compile Include="Entities\Performer.cs" />
     <Compile Include="Entities\Song.cs" />
+    <Compile Include="Interfaces\IAccord.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\ISong.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Migrations\201707171607286_qqqq.cs" />
     <Compile Include="Migrations\201707171607286_qqqq.Designer.cs">

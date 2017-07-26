@@ -4,8 +4,9 @@ using Ninject;
 using System.Collections.Generic;
 using System;
 using Task.BLL.Interfaces;
+using Task.BLL.DTO;
 
-namespace Task.WEB.Util
+namespace Task.Web.Util
 {
     public class NinjectDependencyResolver : IDependencyResolver
     {
@@ -25,7 +26,10 @@ namespace Task.WEB.Util
         }
         private void AddBindings()
         {
-            kernel.Bind<IServices>().To<AllServices>();
+            kernel.Bind<IServices<PerformerDTO>>().To<PerformerService>();
+            kernel.Bind<IServices<SongDTO>>().To<SongService>();
+            kernel.Bind<IAccordServices>().To<AccordService>();
+            kernel.Bind<ICommon>().To<CommonServices>();
         }
     }
 }
