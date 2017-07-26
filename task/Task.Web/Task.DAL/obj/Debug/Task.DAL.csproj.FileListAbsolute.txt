@@ -24,3 +24,4 @@ D:\Student\sem\Work Folder\Rep\task\Task.Web\Task.DAL\obj\Debug\Task.DAL.Migrati
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task.DAL\obj\Debug\Task.DAL.csproj.GenerateResource.Cache
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task.DAL\obj\Debug\Task.DAL.dll
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task.DAL\obj\Debug\Task.DAL.pdb
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task.DAL\obj\Debug\Task.DAL.csprojResolveAssemblyReference.cache

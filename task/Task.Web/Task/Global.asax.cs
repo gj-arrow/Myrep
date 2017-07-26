@@ -21,8 +21,8 @@ namespace Task
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            //AutoMapperConfigBLL.RegisterMappings();
-           // AutoMapperConfigWeb.RegisterMappings();
+            AutoMapperConfigBLL.RegisterMappings();
+            AutoMapperConfigWeb.RegisterMappings();
         }
     }
 }

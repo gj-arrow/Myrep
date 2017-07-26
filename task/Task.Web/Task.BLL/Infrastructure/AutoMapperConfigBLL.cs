@@ -9,45 +9,18 @@ namespace Task.BLL.Infrastructure
 {
     public class AutoMapperConfigBLL
     {
+        public static MapperConfiguration MapperConfiguration;
         public static void RegisterMappings()
         {
-            Mapper.Initialize(cfg => {
-                cfg.CreateMap<Accord, AccordDTO>().ReverseMap();
+            MapperConfiguration = new MapperConfiguration(cfg =>
+            {
                 cfg.CreateMap<Performer, PerformerDTO>().ReverseMap();
                 cfg.CreateMap<Song, SongDTO>().ReverseMap();
+                cfg.CreateMap<Accord, AccordDTO>().ReverseMap();
             });
         }
     }
-
-    public class SongProfileDTO : Profile
-    {
-        public SongProfileDTO()
-        {
-            CreateMap<Song, SongDTO>();
-            CreateMap<SongDTO, Song>();
-        }
-    }
-
-    public class AccordProfileDTO : Profile
-    {
-        public AccordProfileDTO()
-        {
-            CreateMap<Accord, AccordDTO>();
-            CreateMap<AccordDTO, Accord>();
-        }
-    }
-
-    public class PerformerProfileDTO : Profile
-    {
-        public PerformerProfileDTO()
-        {
-            CreateMap<Accord, AccordDTO>().ReverseMap();
-            CreateMap<Performer, PerformerDTO>().ReverseMap();
-            CreateMap<Song, SongDTO>().ReverseMap();
-        }
-    }
 }
-
 //public static void Configure()
 //{
 //    Mapper.Initialize(x =>

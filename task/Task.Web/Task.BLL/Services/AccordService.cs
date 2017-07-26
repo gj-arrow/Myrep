@@ -11,10 +11,12 @@ namespace Task.BLL.Services
     public class AccordService : IAccordServices
     {
         IUnitOfWork Database { get; set; }
+        IMapper _mapper;
 
         public AccordService(IUnitOfWork uow)
         {
             Database = uow;
+            _mapper = AutoMapperConfigBLL.MapperConfiguration.CreateMapper();
         }
 
         public IEnumerable<string> GetNameAccrods()
@@ -26,13 +28,7 @@ namespace Task.BLL.Services
         {
             Database.Songs.DeleteAccords(idSong);
             Song updateSong = Database.Songs.AddAccords(arr, idSong);
-            Mapper.Initialize(cfg =>
-            {
-                cfg.CreateMap<Performer, PerformerDTO>();
-                cfg.CreateMap<Song, SongDTO>();
-                cfg.CreateMap<Accord, AccordDTO>();
-            });
-            return Mapper.Map<Song, SongDTO>(updateSong);
+            return _mapper.Map<Song, SongDTO>(updateSong);
         }
 
         public void Dispose()

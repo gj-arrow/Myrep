@@ -3,6 +3,7 @@ using Task.BLL.Interfaces;
 using Task.BLL.DTO;
 using AutoMapper;
 using Task.Web.Models;
+using Task.App_Start;
 
 
 namespace Task.Web.Controllers
@@ -10,21 +11,17 @@ namespace Task.Web.Controllers
     public class SongController : Controller
     {
         IServices<SongDTO> Services;
+        IMapper _mapper;
         public SongController(IServices<SongDTO> serv)
         {
             Services = serv;
+            _mapper = AutoMapperConfigWeb.MapperConfiguration.CreateMapper();
         }
 
         public ActionResult InfoSong(int? idSong)
         {
             SongDTO songDto = Services.GetById(idSong);
-            Mapper.Initialize(cfg =>
-            {
-                cfg.CreateMap<SongDTO, SongViewModel>();
-                cfg.CreateMap<PerformerDTO, PerformerViewModel>();
-                cfg.CreateMap<AccordDTO, AccordViewModel>();
-            });
-            var song = Mapper.Map<SongDTO, SongViewModel>(songDto);
+            var song = _mapper.Map<SongDTO, SongViewModel>(songDto);
             return View(song);
         }
 

@@ -12,10 +12,12 @@ namespace Task.BLL.Services
     public class SongService : IServices<SongDTO>
     {
         IUnitOfWork Database { get; set; }
+        IMapper _mapper;
 
         public SongService(IUnitOfWork uow)
         {
             Database = uow;
+            _mapper = AutoMapperConfigBLL.MapperConfiguration.CreateMapper();
         }
 
         public SongDTO GetById(int? id)
@@ -25,24 +27,12 @@ namespace Task.BLL.Services
             var song = Database.Songs.Get(id.Value);
             if (song == null)
                 throw new ValidationException("Исполнитель не найден", "");
-            Mapper.Initialize(cfg =>
-            {
-                cfg.CreateMap<Performer, PerformerDTO>();
-                cfg.CreateMap<Song, SongDTO>();
-                cfg.CreateMap<Accord, AccordDTO>();
-            });
-            return Mapper.Map<Song, SongDTO>(song);
+            return _mapper.Map<Song, SongDTO>(song);
         }
 
         public IEnumerable<SongDTO> GetAll()
         {
-            Mapper.Initialize(cfg =>
-            {
-                cfg.CreateMap<Performer, PerformerDTO>();
-                cfg.CreateMap<Song, SongDTO>();
-                cfg.CreateMap<Accord, AccordDTO>();
-            });
-            return Mapper.Map<IEnumerable<Song>, List<SongDTO>>(Database.Songs.GetAll());
+            return _mapper.Map<IEnumerable<Song>, List<SongDTO>>(Database.Songs.GetAll());
         }
 
         public void Dispose()

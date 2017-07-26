@@ -11,21 +11,19 @@ namespace Task.BLL.Services
     public class PerformerService : IServices<PerformerDTO>
     {
         IUnitOfWork Database { get; set; }
+        IMapper _mapper;
+
 
         public PerformerService(IUnitOfWork uow)
         {
             Database = uow;
+            _mapper = AutoMapperConfigBLL.MapperConfiguration.CreateMapper();
         }
 
         public IEnumerable<PerformerDTO> GetAll()
         {
             var performers = Database.Performers.GetAll();
-            Mapper.Initialize(cfg =>
-            {
-                cfg.CreateMap<Performer, PerformerDTO>();
-                cfg.CreateMap<Song, SongDTO>();
-            });
-            return Mapper.Map<IEnumerable<Performer>, List<PerformerDTO>>(performers);
+            return _mapper.Map<IEnumerable<Performer>, List<PerformerDTO>>(performers);
         }
 
         public PerformerDTO GetById(int? id)
@@ -35,12 +33,7 @@ namespace Task.BLL.Services
             var performer = Database.Performers.Get(id.Value);
             if (performer == null)
                 throw new ValidationException("Исполнитель не найден", "");
-            Mapper.Initialize(cfg =>
-            {
-                cfg.CreateMap<Performer, PerformerDTO>();
-                cfg.CreateMap<Song, SongDTO>();
-            });
-            return Mapper.Map<Performer, PerformerDTO>(performer);
+            return _mapper.Map<Performer, PerformerDTO>(performer);
         }
 
         public void Dispose()
