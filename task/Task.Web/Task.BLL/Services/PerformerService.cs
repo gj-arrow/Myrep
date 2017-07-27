@@ -4,15 +4,15 @@ using Task.DAL.Interfaces;
 using Task.BLL.Infrastructure;
 using System.Collections.Generic;
 using Task.BLL.Interfaces;
+using System.Linq;
 using AutoMapper;
 
 namespace Task.BLL.Services
 {
-    public class PerformerService : IServices<PerformerDTO>
+    public class PerformerService : IPerformerService
     {
         IUnitOfWork Database { get; set; }
         IMapper _mapper;
-
 
         public PerformerService(IUnitOfWork uow)
         {
@@ -34,6 +34,34 @@ namespace Task.BLL.Services
             if (performer == null)
                 throw new ValidationException("Исполнитель не найден", "");
             return _mapper.Map<Performer, PerformerDTO>(performer);
+        }
+
+        public IEnumerable<PerformerDTO> Sort(string sort, IEnumerable<PerformerDTO> performers) {
+            var query = performers;
+            switch (sort)
+            {
+                case "ascName":
+                    query = query.OrderBy(n => n.Name);
+                    break;
+                case "descName":
+                    query = query.OrderByDescending(n => n.Name);
+                    break;
+                case "ascView":
+                    query = query.OrderBy(v => v.Views);
+                    break;
+                case "descView":
+                    query = query.OrderByDescending(v => v.Views);
+                    break;
+                case "ascSongs":
+                    query = query.OrderBy(v => v.CountOfSongs);
+                    break;
+                case "descSongs":
+                    query = query.OrderByDescending(v => v.CountOfSongs);
+                    break;
+                default:
+                    break;
+            }
+            return query;
         }
 
         public void Dispose()

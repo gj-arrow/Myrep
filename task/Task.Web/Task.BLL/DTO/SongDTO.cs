@@ -11,10 +11,10 @@ namespace Task.BLL.DTO
         public int Id { get; set; }
         public string Name { get; set; }
         public string Text { get; set; }
-        public string Views { get; set; }
+        public int Views { get; set; }
         public string UrlVideo { get; set; }
 
         public PerformerDTO Performer { get; set; }
-        public ICollection<AccordDTO> Accords { get; set; }
+        public IEnumerable<AccordDTO> Accords { get; set; }
     }
 }

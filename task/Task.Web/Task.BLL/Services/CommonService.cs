@@ -4,16 +4,22 @@ using Task.BLL.Interfaces;
 using System.Text;
 using System.Threading;
 using HtmlAgilityPack;
+using System;
 using HtmlDocument = HtmlAgilityPack.HtmlDocument;
+using System.Globalization;
 
+
+//DELETE FROM dbo.Accords Where Id>0
+//DELETE FROM dbo.Songs Where Id>0
+//DELETE FROM dbo.Performers Where Id>0
 
 namespace Task.BLL.Services
 {
-    public class CommonServices : ICommon
+    public class CommonService : ICommon
     {
         IUnitOfWork Database { get; set; }
 
-        public CommonServices(IUnitOfWork uow)
+        public CommonService(IUnitOfWork uow)
         {
             Database = uow;
         }
@@ -70,9 +76,19 @@ namespace Task.BLL.Services
                                 ShortBio.RemoveChild(ShortBio.LastChild);
                             }
                             HtmlNode UrlImage = HD.DocumentNode.SelectSingleNode("//div[@class='artist-profile__photo debug1']");
-                            performer.CountOfSongs = count_songs;
+
+                            int count_songsINT = 0;
+                            if (Int32.TryParse(count_songs, NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out count_songsINT))
+                            {
+                                performer.CountOfSongs = count_songsINT;
+                            }
+
+                            int count_viewsINT = 0;
+                            if (Int32.TryParse(count_views, NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out count_viewsINT))
+                            {
+                                performer.Views = count_viewsINT;
+                            }
                             performer.Name = name_of_group;
-                            performer.Views = count_views;
                             performer.ShortBiography = ShortBio.InnerHtml;
                             performer.UrlImage = UrlImage.FirstChild.GetAttributeValue("src", "");
                             performer.UrlName = urlName;
@@ -85,7 +101,7 @@ namespace Task.BLL.Services
                             {
                                 foreach (HtmlNode hn3 in Elements)
                                 {
-                                    if (count_for_cicle == 5) break;
+                                    if (count_for_cicle == 35) break;
                                     if (hn3.OuterHtml.Contains("//amdm.ru/akkordi"))
                                     {
                                         url_one_song = "https:" + hn3.GetAttributeValue("href", "href");
@@ -103,14 +119,18 @@ namespace Task.BLL.Services
 
                                         Song song = new Song();
                                         song.Name = name;
-                                        song.Views = count_views;
+                                        int count_viewsToINT = 0;
+                                        if (Int32.TryParse(count_views, NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out count_viewsToINT))
+                                        {
+                                            song.Views = count_viewsToINT;
+                                        }
                                         song.Text = html_node_text.InnerHtml;
                                         song.Performer = performer;
                                         song.UrlVideo = urlNameVideo;
 
                                         Database.Songs.Create(song);
                                         Database.Save();
-
+                                        Thread.Sleep(1000);
                                         //выбирае деревья из класса написанного в textBox и элемента написанного
                                         HtmlNodeCollection Elements2 = HD.DocumentNode.SelectNodes("//div[@id='song_chords']/img");
                                         if (Elements2 != null)

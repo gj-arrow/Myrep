@@ -11,7 +11,7 @@ namespace Task.DAL.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public string Text { get; set; }
-        public string Views { get; set; }
+        public int Views { get; set; }
         public string UrlVideo { get; set; }
 
         public ICollection<Accord> Accords { get; set; }

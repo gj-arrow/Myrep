@@ -191,10 +191,11 @@
     </Compile>
     <Compile Include="Helpers\PagingHelpers.cs" />
     <Compile Include="Models\Entities\AccordViewModel.cs" />
-    <Compile Include="Models\Entities\ListSongViewModel.cs" />
+    <Compile Include="Models\ListSongViewModel.cs" />
     <Compile Include="Models\PageInfo.cs" />
     <Compile Include="Models\Entities\PerformerViewModel.cs" />
-    <Compile Include="Models\SongViewModel.cs" />
+    <Compile Include="Models\Entities\SongViewModel.cs" />
+    <Compile Include="Models\PerformerPageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\NinjectDependencyResolver.cs" />
   </ItemGroup>

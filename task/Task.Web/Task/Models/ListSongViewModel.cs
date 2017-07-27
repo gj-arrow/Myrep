@@ -10,5 +10,6 @@ namespace Task.Web.Models
         public PerformerViewModel Performer { get; set; }
         public IEnumerable<SongViewModel> Songs { get; set; }
         public PageInfo PageInfo { get; set; }   
+        public string CurrentSort { get; set; }
     }
 }

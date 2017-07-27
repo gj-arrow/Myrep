@@ -5,11 +5,12 @@ using Task.BLL.Infrastructure;
 using System.Collections.Generic;
 using Task.BLL.Interfaces;
 using AutoMapper;
+using System.Linq;
 
 
 namespace Task.BLL.Services
 {
-    public class SongService : IServices<SongDTO>
+    public class SongService : ISongService
     {
         IUnitOfWork Database { get; set; }
         IMapper _mapper;
@@ -34,6 +35,31 @@ namespace Task.BLL.Services
         {
             return _mapper.Map<IEnumerable<Song>, List<SongDTO>>(Database.Songs.GetAll());
         }
+
+        public IEnumerable<SongDTO> Sort(string sort, IEnumerable<SongDTO> songs)
+        {
+            var query = songs;
+            switch (sort)
+            {
+                case "ascName":
+                    query = query.OrderBy(n => n.Name);
+                    break;
+                case "descName":
+                    query = query.OrderByDescending(n => n.Name);
+                    break;
+                case "ascView":
+                    query = query.OrderBy(v => v.Views);
+                    break;
+                case "descView":
+                    query = query.OrderByDescending(v => v.Views);
+                    break;
+                default:
+                    break;
+            }
+            return query;
+        }
+
+
 
         public void Dispose()
         {

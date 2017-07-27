@@ -8,7 +8,7 @@ using Task.BLL.Infrastructure;
 
 namespace Task.BLL.Services
 {
-    public class AccordService : IAccordServices
+    public class AccordService : IAccordService
     {
         IUnitOfWork Database { get; set; }
         IMapper _mapper;
@@ -24,10 +24,10 @@ namespace Task.BLL.Services
             return Database.Accords.GetAllName();
         }
 
-        public SongDTO SaveAccords(string[] arr, int idSong)
+        public SongDTO SaveAccords(string[] accords, int idSong)
         {
             Database.Songs.DeleteAccords(idSong);
-            Song updateSong = Database.Songs.AddAccords(arr, idSong);
+            Song updateSong = Database.Songs.AddAccords(accords, idSong);
             return _mapper.Map<Song, SongDTO>(updateSong);
         }
 

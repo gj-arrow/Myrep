@@ -21,16 +21,3 @@ namespace Task.BLL.Infrastructure
         }
     }
 }
-//public static void Configure()
-//{
-//    Mapper.Initialize(x =>
-//    {
-//        var types = Assembly.GetAssembly(typeof(PerformerProfile)).GetTypes()
-//            .Where(t => t != typeof(Profile) && typeof(Profile).IsAssignableFrom(t) && !t.IsAbstract);
-
-//        foreach (var type in types)
-//        {
-//            x.AddProfile((Profile)Activator.CreateInstance(type));
-//        }
-//    });
-//}

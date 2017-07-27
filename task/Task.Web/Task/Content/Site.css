@@ -117,26 +117,6 @@ h1, h2, h3, h4, h5 {
     color:#999;
 }
 
-/*ul.pagination{
-    list-style: none;
-    margin: 20px 0px 0px -7px;
-    padding: 0;
-    width: auto;
-    height: 32px;
-    position: relative;
-}
-
-ul.pagination >li.active {
-    padding: 7px;
-    height: 20px;
-    width: 20px;
-    line-height: 20px;
-    color: #959595;
-    text-decoration: none;
-    background-color: #f0ede6;
-    border-radius: 50%;
-}*/
-
 .pagination > li > a,
 .btn-group>a
 {

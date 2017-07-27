@@ -13,9 +13,9 @@ namespace Task.Web.Controllers
 {
     public class AccordController : Controller
     {
-        IAccordServices Services;
+        IAccordService Services;
         IMapper _mapper;
-        public AccordController(IAccordServices serv)
+        public AccordController(IAccordService serv)
         {
             Services = serv;
             _mapper = AutoMapperConfigWeb.MapperConfiguration.CreateMapper();

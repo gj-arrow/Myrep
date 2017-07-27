@@ -26,10 +26,10 @@ namespace Task.Web.Util
         }
         private void AddBindings()
         {
-            kernel.Bind<IServices<PerformerDTO>>().To<PerformerService>();
-            kernel.Bind<IServices<SongDTO>>().To<SongService>();
-            kernel.Bind<IAccordServices>().To<AccordService>();
-            kernel.Bind<ICommon>().To<CommonServices>();
+            kernel.Bind<IPerformerService>().To<PerformerService>();
+            kernel.Bind<ISongService>().To<SongService>();
+            kernel.Bind<IAccordService>().To<AccordService>();
+            kernel.Bind<ICommon>().To<CommonService>();
         }
     }
 }

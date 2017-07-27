@@ -4,7 +4,7 @@ using Task.BLL.DTO;
 
 namespace Task.BLL.Interfaces
 {
-    public interface IServices<T>
+    public interface IService<T>
     {
         T GetById(int? id);
         IEnumerable<T> GetAll();

@@ -1,5 +1,5 @@
-﻿@model PagedList.IPagedList<Task.Web.Models.PerformerViewModel>
-@using PagedList.Mvc;
+﻿@model Task.Web.Models.PerformerPageViewModel
+@using Task.Web.Helpers
 @{
     ViewBag.Title = "Amdm.ru";
 }
@@ -10,12 +10,21 @@
         <table class="table">
             <thead>
                 <tr class="top_label">
-                <th colspan="2">Исполнитель</th>
-                <th class="td2">Подборов</th>
-                <th class="td2">Просмотров</th>
+                <th colspan="2">Исполнитель
+                    @Html.ActionLink("A", "Index", new { page = Model.PageInfo.PageNumber, sort = "ascName" })
+                    @Html.ActionLink("B", "Index", new { page = Model.PageInfo.PageNumber, sort = "descName" })
+                    </th>
+                <th class="td2">Подборов
+                    @Html.ActionLink("A", "Index", new { page = Model.PageInfo.PageNumber, sort = "ascSongs" })
+                    @Html.ActionLink("B", "Index", new { page = Model.PageInfo.PageNumber, sort = "descSongs" })
+                    </th>
+                <th class="td2">Просмотров
+                    @Html.ActionLink("A", "Index", new { page = Model.PageInfo.PageNumber, sort = "ascView" })
+                    @Html.ActionLink("B", "Index", new { page = Model.PageInfo.PageNumber, sort = "descView"})
+                    </th>
                 </tr>
             </thead>
-            @foreach (var item in Model)
+            @foreach (var item in Model.Performers)
             {
                 <tr>
                     <td class="td1-icon">
@@ -24,11 +33,14 @@
                         </a>
                     </td>
                     <td class="td1-1">@Html.ActionLink(item.Name, "PerformerProfile", new { idPerformer = item.Id, name = item.UrlName })</td>
-                    <td class="td2">@item.CountOfSongs</td>
-                    <td class="td2">@item.Views</td>
+                    <td class="td2">@string.Format("{0:n0}", item.CountOfSongs)</td>
+                    <td class="td2">@string.Format("{0:n0}", item.Views)</td>
                 </tr>
             }
         </table>
     </div>
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    <div class="btn-group">
+        @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x, sort = Model.CurrentSort }))
+    </div>
+
 </div>

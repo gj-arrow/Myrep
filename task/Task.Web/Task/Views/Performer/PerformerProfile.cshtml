@@ -25,9 +25,15 @@
         <table class="table">
             <thead>
                 <tr class="top_label">
-                    <th>Название композиции</th>
+                    <th>Название композиции 
+                    @Html.ActionLink("A", "PerformerProfile", new { idPerformer = Model.Performer.Id, page = Model.PageInfo.PageNumber, sort = "ascName"})
+                    @Html.ActionLink("B", "PerformerProfile", new { idPerformer = Model.Performer.Id, page = Model.PageInfo.PageNumber, sort = "descName"})
+                    </th>
                     <th class="text-center">Видео</th>
-                    <th class="text-center">Просмотров</th>
+                    <th class="text-center">Просмотров
+                        @Html.ActionLink("A", "PerformerProfile", new { idPerformer = Model.Performer.Id, page = Model.PageInfo.PageNumber, sort = "ascView" })
+                        @Html.ActionLink("B", "PerformerProfile", new { idPerformer = Model.Performer.Id, page = Model.PageInfo.PageNumber, sort = "descView" })
+                    </th>
                 </tr>
             </thead>
                 @foreach (var item in Model.Songs)
@@ -40,16 +46,13 @@
                                   <i class="fa fa-youtube-play">есть</i>
                             }
                         </td>
-                        <td class="td2">@item.Views</td>
+                        <td class="td2">@string.Format("{0:n0}", item.Views)</td>
                     </tr>
                 }
          </table>
     </div>
     <div class="btn-group">
-        @Html.PageLinks(Model.PageInfo, x => Url.Action("PerformerProfile", new { idPerformer = Model.Performer.Id , page = x }))
+        @Html.PageLinks(Model.PageInfo, x => Url.Action("PerformerProfile", new { idPerformer = Model.Performer.Id , page = x , sort = Model.CurrentSort}))
     </div>
 </div>
 
-@*DELETE FROM dbo.Accords Where Id>0
-DELETE FROM dbo.Songs Where Id>0
-DELETE FROM dbo.Performers Where Id>0*@

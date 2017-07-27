@@ -10,9 +10,9 @@ namespace Task.Web.Controllers
 {
     public class SongController : Controller
     {
-        IServices<SongDTO> Services;
+        IService<SongDTO> Services;
         IMapper _mapper;
-        public SongController(IServices<SongDTO> serv)
+        public SongController(IService<SongDTO> serv)
         {
             Services = serv;
             _mapper = AutoMapperConfigWeb.MapperConfiguration.CreateMapper();
