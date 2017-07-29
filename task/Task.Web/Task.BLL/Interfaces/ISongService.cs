@@ -10,5 +10,6 @@ namespace Task.BLL.Interfaces
    public interface ISongService : IService<SongDTO>
     {
         IEnumerable<SongDTO> Sort(string sort, IEnumerable<SongDTO> songs);
+        List<int> GetRangeById(int idSong, string sort);
     }
 }

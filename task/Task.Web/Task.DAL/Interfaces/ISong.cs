@@ -1,5 +1,6 @@
 ﻿using System;
 using Task.DAL.Entities;
+using System.Collections.Generic;
 
 namespace Task.DAL.Interfaces
 {
@@ -7,5 +8,6 @@ namespace Task.DAL.Interfaces
     {
         void DeleteAccords(int idSong);
         Song AddAccords(string[] elements, int idSong);
+        List<int> GetRangeIdBySort(int idPerformer , string sort);
     }
 }

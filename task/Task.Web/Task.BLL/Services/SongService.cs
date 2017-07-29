@@ -27,8 +27,16 @@ namespace Task.BLL.Services
                 throw new ValidationException("Не установлено id исполнителя", "");
             var song = Database.Songs.Get(id.Value);
             if (song == null)
-                throw new ValidationException("Исполнитель не найден", "");
+             //   song = Database.Songs.GetFirst(id.Value);
+            throw new ValidationException("Исполнитель не найден", "");
             return _mapper.Map<Song, SongDTO>(song);
+        }
+
+
+       public List<int> GetRangeById(int idSong, string sort) {
+            var idPerformer = Database.Songs.Get(idSong).Performer.Id;
+            var lsRangeId = Database.Songs.GetRangeIdBySort(idPerformer,sort);
+            return lsRangeId;
         }
 
         public IEnumerable<SongDTO> GetAll()

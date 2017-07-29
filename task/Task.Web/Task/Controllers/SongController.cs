@@ -10,19 +10,27 @@ namespace Task.Web.Controllers
 {
     public class SongController : Controller
     {
-        IService<SongDTO> Services;
+        ISongService Services;
         IMapper _mapper;
-        public SongController(IService<SongDTO> serv)
+        public SongController(ISongService serv)
         {
             Services = serv;
             _mapper = AutoMapperConfigWeb.MapperConfiguration.CreateMapper();
         }
 
-        public ActionResult InfoSong(int? idSong)
+        public ActionResult InfoSong(int? idSong, string sort ="ascName")
         {
             SongDTO songDto = Services.GetById(idSong);
             var song = _mapper.Map<SongDTO, SongViewModel>(songDto);
+            ViewBag.Sort = sort;
             return View(song);
+        }
+
+        [HttpGet]
+        public JsonResult GetRangeId(int idSong, string sort)
+        {
+            var range = Services.GetRangeById(idSong, sort);
+            return Json(range, JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)

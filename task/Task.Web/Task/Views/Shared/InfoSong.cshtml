@@ -2,7 +2,6 @@
 @{
     ViewBag.Title = Model.Performer.Name +"-"+ Model.Name + ", аккорды для гитары";
 }
-<script src="dist/bootstrap-tokenfield.js"></script>
 
 <link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet">
 <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
@@ -32,7 +31,10 @@
 
             <input type="submit" value="Сохранить" class="btn btn-success saveAcc" />
         </form>
-
+        <div class="buttons-arrow">
+            <button type="button" value="pre" id="idPrevious"><img class="arrow" src='~/Content/Images/left.png' /></button>
+            <button type="button" value="next" id="idNext"><img class="arrow" src='~/Content/Images/right.png' /></button>
+        </div>
 </div>
 @if (Model.UrlVideo.Length != 0)
 {
@@ -49,22 +51,59 @@
 
 <script>
     $(document).ready(function () {
-        var url = "/Accord/DataAccords";
-        var arr = [];
-        $('.imagesAccord').each(function (index, value) {
-            arr.push(value.alt);
-        })
-        $.ajax(url, {
-            success: function (data) {
-                $('#tokenfield').tokenfield({
-                        tokens:arr,
-                        autocomplete: {
-                        source: data,
-                        delay: 100
-                    },
-                    showAutocompleteOnFocus: true
-                })
+    var urlToRangeId = '/Song/GetRangeId/?idSong=' + @Model.Id + '&sort='+'@ViewBag.Sort';
+    $.ajax(urlToRangeId, {
+        success: function (data) {
+            var a = data.indexOf(@Model.Id);
+
+    $('#idPrevious').on('click', function (e) {
+        var index = data.indexOf(@Model.Id);
+        if (!data[index - 1])
+            e.preventDefault();
+        else {
+            $.ajax({
+                url: '/Song/InfoSong/?idSong=' + data[index - 1] + '&sort=' + '@ViewBag.Sort',
+                cache: false,
+                success: function (html) {
+                    $("#content").html(html);
+                }
+            });
         }
-        });
     });
+
+    $('#idNext').on('click', function (e) {
+            var index = data.indexOf(@Model.Id);
+        if (!data[index + 1])
+            e.preventDefault();
+        else {
+            $.ajax({
+                url: '/Song/InfoSong/?idSong=' + data[index + 1] + '&sort=' + '@ViewBag.Sort',
+                cache: false,
+                success: function (html) {
+                    $("#content").html(html);
+                }
+            });
+        }
+    });
+    }
+});
+
+    var url = "/Accord/DataAccords";
+    var arr = [];
+    $('.imagesAccord').each(function (index, value) {
+        arr.push(value.alt);
+    })
+    $.ajax(url, {
+        success: function (data) {
+            $('#tokenfield').tokenfield({
+                    tokens:arr,
+                    autocomplete: {
+                    source: data,
+                    delay: 100
+                },
+                showAutocompleteOnFocus: true
+            })
+    }
+    });
+});
 </script>

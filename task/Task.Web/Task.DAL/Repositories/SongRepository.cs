@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Task.DAL.Repositories
 {
-    public class SongRepository : IRepository<Song>, ISong
+    public class SongRepository : ISong
     {
         private EntityContext db;
 
@@ -21,9 +21,36 @@ namespace Task.DAL.Repositories
             return db.Songs;
         }
 
-        public Song Get(int id)
+        public Song Get(int idSong)
         {
-            return db.Songs.Include("Performer").Include("Accords").Where(p => p.Id == id).FirstOrDefault();
+            return db.Songs.Include("Performer").Include("Accords").Where(p => p.Id == idSong).FirstOrDefault();
+        }
+
+        public List<int> GetRangeIdBySort(int idPerformer , string sort)
+        {
+            if (sort == null) sort = "ascName";
+             List<int> range = new List<int>();
+            var query = db.Songs.Where(s => s.Performer.Id == idPerformer);
+
+            switch (sort)
+            {
+                case "ascName":
+                    query = query.OrderBy(n => n.Name);
+                    break;
+                case "descName":
+                    query = query.OrderByDescending(n => n.Name);
+                    break;
+                case "ascView":
+                    query = query.OrderBy(v => v.Views);
+                    break;
+                case "descView":
+                    query = query.OrderByDescending(v => v.Views);
+                    break;
+                default:
+                    break;
+            }
+            range = query.Select(i => i.Id).ToList();
+            return range;
         }
 
         public void Create(Song song)
@@ -40,7 +67,7 @@ namespace Task.DAL.Repositories
         {
             List<Accord> temp = new List<Accord>();
             Song song = db.Songs.Include("Performer").Include("Accords").Where(i => i.Id == idSong).FirstOrDefault();
-            if (song != null && elements != null)
+            if (song != null && elements[0] !="" )
             {
                 foreach (var item in elements)
                 {

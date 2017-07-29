@@ -39,7 +39,7 @@
                 @foreach (var item in Model.Songs)
             {
                     <tr>
-                        <td class="td1">@Html.ActionLink(item.Name, "InfoSong", "Song", new { idSong = item.Id }, null)</td>
+                        <td class="td1">@Html.ActionLink(item.Name, "InfoSong", "Song", new { idSong = item.Id , sort = Model.CurrentSort}, null)</td>
                         <td class="td2">
                             @if (item.UrlVideo.Length != 0)
                             {

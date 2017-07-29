@@ -93,7 +93,7 @@ h1, h2, h3, h4, h5 {
 .b-podbor-info {
     margin:45px 0px 0px 0px;
     padding:20px 0px 0px 0px;
-    right:20%;
+    right:19%;
     text-align:left;
     position:absolute;
     width:27%;
@@ -181,5 +181,20 @@ table.table th {
 
 .main-icon {
     margin:-3% 0% 2% 40%;
+}
+
+.arrow {
+    height:70px;
+}
+
+button {
+    background-color: #fff;
+    border: none;
+    float:left;
+    margin-right:18%;
+}
+
+.buttons-arrow {
+    margin: 15% 0% 0% 19%;
 }
 
