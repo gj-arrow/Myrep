@@ -13,6 +13,11 @@ namespace Task.App_Start
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //routes.MapRoute(
+            //  "Performer",
+            //  "Performer/{action}/{id}",
+            //  new { controller = "Performer", action = "PerformerProfile", id = UrlParameter.Optional });
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

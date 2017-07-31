@@ -93,7 +93,7 @@ h1, h2, h3, h4, h5 {
 .b-podbor-info {
     margin:45px 0px 0px 0px;
     padding:20px 0px 0px 0px;
-    right:19%;
+    right:15%;
     text-align:left;
     position:absolute;
     width:27%;
@@ -126,13 +126,7 @@ h1, h2, h3, h4, h5 {
     line-height: 10px;
 }
 
-.pagination > li:first-child:focus,
-.pagination > li:last-child:focus,
-.pagination > li.active > a,
-.pagination > li> a:hover,
-.pagination > li.active> a:hover,
-.pagination > li> a:focus,
-.pagination > li.active> a:focus ,
+
 .btn-group>a.selected,
 .btn-group>a.btn:hover
 
@@ -143,14 +137,6 @@ h1, h2, h3, h4, h5 {
     color: #959595;
 }
 
-.pagination > li > a:active{
-     background-image: none;
-    outline: 0;
-    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-
-}
-
 .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle),
 .btn-group > .btn:last-child:not(:first-child), 
 .btn-group > .dropdown-toggle:not(:first-child),
@@ -158,8 +144,6 @@ h1, h2, h3, h4, h5 {
     border-radius: 50%;
 }
 
-
-.pagination > li > a,
 .btn-group>a
 {
     background-color: #fff;
@@ -196,5 +180,14 @@ button {
 
 .buttons-arrow {
     margin: 15% 0% 0% 19%;
+}
+
+.under-profile-photo {
+    float: left;
+    width: 100%;
+}
+
+.biography-min-height {
+    min-height: 450px;
 }
 

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
+
+  <mvcSiteMapNode title="Главная" controller="Performer" action="Index">
+    <mvcSiteMapNode title="Performer" controller="Performer" action="PerformerProfile" preservedRouteParameters="idPerformer,page,sort">
+      <mvcSiteMapNode title="Song" controller="Song" action="InfoSong"/>
+      <mvcSiteMapNode title="Биография" controller="Performer" action="BiographyProfile"/>
+    </mvcSiteMapNode>
+  </mvcSiteMapNode>
+</mvcSiteMap>

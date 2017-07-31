@@ -141,3 +141,7 @@ D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\HtmlAgilityPack.xml
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\obj\Debug\Task.Web.csprojResolveAssemblyReference.cache
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\obj\Debug\Task.dll
 D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\obj\Debug\Task.pdb
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\MvcSiteMapProvider.dll
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\MvcSiteMapProvider.WebActivator.dll
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\MvcSiteMapProvider.xml
+D:\Student\sem\Work Folder\Rep\task\Task.Web\Task\bin\MvcSiteMapProvider.WebActivator.xml

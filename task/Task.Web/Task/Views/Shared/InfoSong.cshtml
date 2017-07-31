@@ -61,13 +61,15 @@
         if (!data[index - 1])
             e.preventDefault();
         else {
+            var urlPre = '/Song/InfoSong/?sort=' + '@ViewBag.Sort' + '&idPerformer=' + '@Model.Performer.Id' + '&idSong=' + data[index - 1];
             $.ajax({
-                url: '/Song/InfoSong/?idSong=' + data[index - 1] + '&sort=' + '@ViewBag.Sort',
+                url: urlPre,
                 cache: false,
                 success: function (html) {
                     $("#content").html(html);
                 }
             });
+            history.pushState(null, null, urlPre);
         }
     });
 
@@ -76,13 +78,15 @@
         if (!data[index + 1])
             e.preventDefault();
         else {
+            var urlNext = '/Song/InfoSong/?sort=' + '@ViewBag.Sort' + '&idPerformer=' + '@Model.Performer.Id' + '&idSong=' + data[index + 1];
             $.ajax({
-                url: '/Song/InfoSong/?idSong=' + data[index + 1] + '&sort=' + '@ViewBag.Sort',
+                url: urlNext,
                 cache: false,
                 success: function (html) {
                     $("#content").html(html);
                 }
             });
+            history.pushState(null, null, urlNext);
         }
     });
     }

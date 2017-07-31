@@ -6,6 +6,8 @@ using AutoMapper;
 using Task.Web.Models;
 using System.Linq;
 using Task.App_Start;
+using MvcSiteMapProvider;
+using MvcSiteMapProvider.Web.Mvc.Filters;
 
 namespace Task.Web.Controllers
 {
@@ -23,6 +25,7 @@ namespace Task.Web.Controllers
             _mapper = AutoMapperConfigWeb.MapperConfiguration.CreateMapper();
         }
 
+        
         public ActionResult Index(int page = 1, string sort = "")
         {
             IEnumerable<PerformerDTO> performDtos = PerformerServices.GetAll();
@@ -33,6 +36,7 @@ namespace Task.Web.Controllers
             return View(model);
         }
 
+        [SiteMapTitle("Performer.Name")]
         public ActionResult PerformerProfile(int? idPerformer, int page = 1, string sort = "")
         {
             IEnumerable<SongViewModel> songsPerPage;
@@ -45,8 +49,8 @@ namespace Task.Web.Controllers
             return View(model);
         }
 
-
-        public ActionResult BiographyProfile(int? idPerformer)
+        [SiteMapTitle("Name", Target = AttributeTarget.ParentNode)]
+        public ActionResult BiographyProfile(int? idPerformer, int page = 1, string sort = "")  
         {
             PerformerDTO performDto = PerformerServices.GetById(idPerformer);
             var performer = _mapper.Map<PerformerDTO, PerformerViewModel>(performDto);

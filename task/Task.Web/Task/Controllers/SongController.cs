@@ -4,23 +4,25 @@ using Task.BLL.DTO;
 using AutoMapper;
 using Task.Web.Models;
 using Task.App_Start;
-
+using MvcSiteMapProvider.Web.Mvc.Filters;
 
 namespace Task.Web.Controllers
 {
     public class SongController : Controller
     {
-        ISongService Services;
+        ISongService SongServices;
         IMapper _mapper;
-        public SongController(ISongService serv)
+        public SongController(ISongService songServ)
         {
-            Services = serv;
+            SongServices = songServ;
             _mapper = AutoMapperConfigWeb.MapperConfiguration.CreateMapper();
         }
 
-        public ActionResult InfoSong(int? idSong, string sort ="ascName")
+        [SiteMapTitle("Name")]
+        [SiteMapTitle("Performer.Name", Target = AttributeTarget.ParentNode)]
+        public ActionResult InfoSong(int idPerformer, int? idSong, string sort ="ascName")
         {
-            SongDTO songDto = Services.GetById(idSong);
+            SongDTO songDto = SongServices.GetById(idSong);
             var song = _mapper.Map<SongDTO, SongViewModel>(songDto);
             ViewBag.Sort = sort;
             return View(song);
@@ -29,13 +31,13 @@ namespace Task.Web.Controllers
         [HttpGet]
         public JsonResult GetRangeId(int idSong, string sort)
         {
-            var range = Services.GetRangeById(idSong, sort);
+            var range = SongServices.GetRangeById(idSong, sort);
             return Json(range, JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)
         {
-            Services.Dispose();
+            SongServices.Dispose();
             base.Dispose(disposing);
         }
     }
